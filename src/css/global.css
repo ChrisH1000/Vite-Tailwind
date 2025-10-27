@@ -1,0 +1,42 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer base {
+
+  :root {
+    /* Colors */
+    --color-teal: 169deg 65% 42%; /* #26b298 */
+    --color-plum: 324deg 72% 40%; /* #b11d75 */
+    --color-black: 0deg 0 0; /* #000 */
+  }
+}
+
+/* COMMON */
+
+* {
+
+  @apply max-w-prose; /* universal inline-size axiom */
+}
+
+/* Unset inline-size on specific elements */
+
+html,
+body,
+div,
+header,
+nav,
+main,
+section,
+article,
+footer {
+  max-inline-size: none;
+}
+
+/* Prevent click events for svg inside links */
+
+a > svg {
+  pointer-events: none;
+}

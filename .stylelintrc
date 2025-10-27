@@ -1,0 +1,58 @@
+{
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-concentric-order"
+  ],
+  "plugins": [
+    "stylelint-declaration-strict-value"
+  ],
+  "ignoreFiles": [
+      "src/stories/**/*.*"
+  ],
+  "rules": {
+    "at-rule-empty-line-before": [
+      "always", {
+        "ignoreAtRules": [ "else" ]
+      }
+    ],
+    "at-rule-no-unknown": [
+      true, {
+        "ignoreAtRules": [ "tailwind" ]
+      }
+    ],
+    "declaration-block-no-redundant-longhand-properties": null,
+    "color-named": "never",
+    "declaration-block-no-duplicate-properties": [
+      true, {
+          "ignore": "consecutive-duplicates"
+      }
+    ],
+    "rule-empty-line-before": "always",
+    "color-hex-length": "short",
+    "color-no-invalid-hex": true,
+    "selector-max-id": 0,
+    "declaration-no-important": null,
+    "no-duplicate-selectors": null,
+    "max-nesting-depth": [ 1, {
+      "ignore": ["blockless-at-rules","pseudo-classes"]
+    }],
+    "property-no-unknown": true,
+    "selector-pseudo-element-colon-notation": "double",
+    "selector-class-pattern": "^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$",
+    "shorthand-property-no-redundant-values": true,
+    "function-url-quotes": "always",
+    "property-no-vendor-prefix": [true, {
+      "ignoreProperties": ["appearance"]
+    }],
+    "selector-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "at-rule-no-vendor-prefix": true,
+    "value-no-vendor-prefix": [true, {
+      "ignoreValues": ["fit-content"]
+    }],
+    "length-zero-no-unit": true,
+    "scale-unlimited/declaration-strict-value": ["/color/", {
+      "ignoreValues": ["currentColor", "inherit", "transparent"]
+    }]
+  }
+}

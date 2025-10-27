@@ -1,0 +1,36 @@
+name: Push to GitHub Packages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/iron'
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@ecu-dmt'
+
+      # Clean install NPM packages
+      - name: Install dependencies
+        run: npm install
+        env:
+          # ECU-DMT GitHub organisation secrets
+          GITHUB_READ_PKG_KEY: ${{ secrets.GH_READ_PACKAGE_TOKEN }}
+
+      # Publish package
+      - run: npm publish
+        env:
+          # ECU-DMT GitHub organisation secrets
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_READ_PKG_KEY: ${{ secrets.GH_READ_PACKAGE_TOKEN }}

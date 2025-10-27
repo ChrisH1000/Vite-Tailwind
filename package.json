@@ -1,0 +1,99 @@
+{
+  "name": "@ecu-dmt/vite-tailwind",
+  "version": "0.0.19",
+  "description": "ECU: JS and SASS build environment using Vite and Tailwind",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecu-dmt/vite-tailwind.git"
+  },
+  "homepage": "https://ecu.edu.au",
+  "author": "Edith Cowan University DMEAT (https://github.com/ecu-dmt)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ecu-dmt/vite-tailwind/issues",
+    "email": "corporateweb@ecu.edu.au"
+  },
+  "scripts": {
+    "postinstall": "husky & playwright install",
+    "clean:dist": "npx rimraf dist",
+    "clean:report": "npx rimraf playwright-report",
+    "test": "npx playwright test --headed",
+    "test:chrome": "npx playwright test --headed --project=chromium",
+    "test:firefox": "npx playwright test --headed --project=firefox",
+    "test:safari": "npx playwright test --headed --project=webkit",
+    "lint": "ts-standard 'src/**/*.ts' | snazzy",
+    "lint:fix": "ts-standard 'src/**/*.ts' | snazzy --fix",
+    "stylelint": "./node_modules/.bin/stylelint src/css",
+    "stylelint:fix": "./node_modules/.bin/stylelint src/css --fix",
+    "dev": "ts-standard 'src/**/*.ts' | snazzy && vite dev --host",
+    "build": "ts-standard 'src/**/*.ts' | snazzy && vite build",
+    "build:dev": "ts-standard 'src/**/*.ts' | snazzy && NODE_ENV='development' vite build",
+    "build:stats": "ts-standard 'src/**/*.ts' | snazzy && NODE_ENV='stats' vite build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.2",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@playwright/test": "^1.49.0",
+    "@storybook/addon-essentials": "^8.4.5",
+    "@storybook/addon-links": "^8.4.5",
+    "@storybook/addon-viewport": "^8.4.5",
+    "@storybook/blocks": "^8.4.5",
+    "@storybook/test": "^8.4.5",
+    "@storybook/web-components": "^8.4.5",
+    "@storybook/web-components-vite": "^8.4.5",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/node": "^22.9.1",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-lit": "^1.15.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-promise": "^7.1.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-storybook": "^0.11.1",
+    "husky": "^9.1.7",
+    "lit": "^3.2.1",
+    "postcss": "^8.4.49",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "snazzy": "^9.0.0",
+    "storybook": "^8.4.5",
+    "stylelint": "^16.10.0",
+    "stylelint-config-concentric-order": "^5.2.0",
+    "stylelint-config-recommended": "^14.0.1",
+    "stylelint-declaration-strict-value": "^1.10.6",
+    "tailwindcss": "^3.4.15",
+    "terser": "^5.36.0",
+    "ts-node": "^10.9.2",
+    "ts-standard": "^12.0.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-remove-console": "^2.2.0",
+    "vite-plugin-stylelint": "^5.3.1"
+  },
+  "dependencies": {
+    "@ecu-dmt/ecu-component-library": "1.0.25",
+    "@felte/element": "^0.5.14",
+    "@felte/reporter-element": "^0.4.11",
+    "@felte/validator-yup": "^1.1.4",
+    "lit-html": "^3.2.1",
+    "yup": "^1.4.0"
+  },
+  "ts-standard": {
+    "project": "./tsconfig.json",
+    "plugins": [
+      "lit"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  }
+}

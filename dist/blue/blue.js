@@ -1,0 +1,1 @@
+import"../ecu-component-library-BMEzp39J.js";import{i as e,A as n}from"../FelteFormsModule-Bo6I-_jT.js";import"../vendor-C1eCH035.js";document.addEventListener("DOMContentLoaded",()=>{new n().init();const o=document.querySelector("felte-form");o!=null&&e(o)});

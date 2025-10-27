@@ -1,0 +1,59 @@
+name: Check Version
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout main branch
+      uses: actions/checkout@v4
+      with:
+        ref: main
+        path: main_branch
+
+    - name: Checkout pull request branch
+      uses: actions/checkout@v4
+      with:
+        path: pr_branch
+
+    - name: Compare package.json versions
+      id: compare-versions
+      run: |
+        MAIN_VERSION=$(jq -r '.version' main_branch/package.json)
+        PR_VERSION=$(jq -r '.version' pr_branch/package.json)
+        echo "main_version=$MAIN_VERSION" >> $GITHUB_ENV
+        echo "pr_version=$PR_VERSION" >> $GITHUB_ENV
+
+    - name: Check if version has been updated
+      run: |
+        if [ "$MAIN_VERSION" = "$PR_VERSION" ]; then
+          echo "The package.json version has not been updated."
+          exit 1
+        else
+          echo "The package.json version has been updated."
+        fi
+      env:
+        MAIN_VERSION: ${{ env.main_version }}
+        PR_VERSION: ${{ env.pr_version }}
+
+      
+    # Comment if job succeeded or failed
+    - name: Add workflow result as comment
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const name = '${{ github.workflow	}}';
+          const url = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
+          const success = '${{ job.status }}' === 'success';
+          const body = `${name}: ${success ? 'succeeded ✅' : 'failed ❌'}\n${url}`;
+
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: body
+          })
+  

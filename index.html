@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ESSENTIAL -->
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- GENERAL -->
+    <title>Vite Vanilla JS — Template</title>
+    <meta name="title" content="Vite Vanilla JS — Template" />
+    <meta name="application-name" content="Vite Vanilla JS — Template" />
+    <script src="https://kit.fontawesome.com/c4475bc3f5.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body data-mode="dark">
+    <noscript class="text-center text-lg text-red-500">
+      Enable JavaScript to enjoy all the features of this app.
+    </noscript>
+    <main
+      id="main"
+      class="h-screen flex flex-col gap-2 justify-center px-4 py-4 md:px-12 md:py-12 lg:px-20 lg:py-24 bg-off-white text-color dark:bg-navy dark:text-white"
+    >
+
+      <section class="mx-auto max-w-screen-sm flex flex-col gap-6">
+
+        <h1
+        class="text-xl font-bold sm:text-2xl md:text-3xl"
+        >
+          Vite Vanilla JS — Template
+        </h1>
+
+        <ecu-button title="A button" url="/" btnStyle="primary-standard">
+          <i slot="start" class="fa-sharp fa-solid fa-wand-magic-sparkles mr-2"></i>
+        </ecu-button>
+
+        <ul class="pl-4 list list-disc">
+          <li><a class="underline transition-colors hover:text-primary hover:duration-75" href="/forms.html">Forms</a></li>
+          <li><a class="underline transition-colors hover:text-primary hover:duration-75" href="/sections.html">Section and buttons</a></li>
+        </ul>
+
+        <ecu-accordion-element showbtn="true">
+          <ecu-accordion-item title="First item">
+              <p>Content for first item.</p>
+          </ecu-accordion-item>
+          <ecu-accordion-item title="Second item">
+              <p>Content for second item.</p>
+          </ecu-accordion-item>
+          <ecu-accordion-item title="Third item" show="true">
+              <p>Content for third item.</p>
+          </ecu-accordion-item>
+        </ecu-accordion-element>
+
+      </section>
+
+    </main>
+  </body>
+
+  <script type="module" src="src/js/main.ts"></script>
+</html>
