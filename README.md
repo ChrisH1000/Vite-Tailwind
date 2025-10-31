@@ -1,7 +1,3 @@
-## Build Setup
-
-Please configure your [Local development environment](https://ecu.atlassian.net/wiki/spaces/DSEP/pages/166069315) before cloninng and setting up this build repo.
-
 ## Run commands
 
 ``` bash
